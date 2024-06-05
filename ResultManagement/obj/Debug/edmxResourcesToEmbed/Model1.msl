@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ResultManagementDbModelStoreContainer" CdmEntityContainer="ResultManagementDbEntities">
+    <EntitySetMapping Name="tblClass">
+      <EntityTypeMapping TypeName="ResultManagementDbModel.tblClass">
+        <MappingFragment StoreEntitySet="tblClass">
+          <ScalarProperty Name="StudentCount" ColumnName="StudentCount" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblExamType">
+      <EntityTypeMapping TypeName="ResultManagementDbModel.tblExamType">
+        <MappingFragment StoreEntitySet="tblExamType">
+          <ScalarProperty Name="ExamTypeId" ColumnName="ExamTypeId" />
+          <ScalarProperty Name="ExamTypeName" ColumnName="ExamTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblResultDetails">
+      <EntityTypeMapping TypeName="ResultManagementDbModel.tblResultDetails">
+        <MappingFragment StoreEntitySet="tblResultDetails">
+          <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblResults">
+      <EntityTypeMapping TypeName="ResultManagementDbModel.tblResults">
+        <MappingFragment StoreEntitySet="tblResults">
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="ExamTypeId" ColumnName="ExamTypeId" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStudents">
+      <EntityTypeMapping TypeName="ResultManagementDbModel.tblStudents">
+        <MappingFragment StoreEntitySet="tblStudents">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentRoll" ColumnName="StudentRoll" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblClassSubject">
+      <EntityTypeMapping TypeName="ResultManagementDbModel.tblClassSubject">
+        <MappingFragment StoreEntitySet="tblClassSubject">
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSubjects">
+      <EntityTypeMapping TypeName="ResultManagementDbModel.tblSubjects">
+        <MappingFragment StoreEntitySet="tblSubjects">
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

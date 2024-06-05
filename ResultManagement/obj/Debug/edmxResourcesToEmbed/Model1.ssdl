@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ResultManagementDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblClass">
+    <Key>
+      <PropertyRef Name="ClassId" />
+    </Key>
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="ClassName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StudentCount" Type="int" />
+  </EntityType>
+  <EntityType Name="tblClassSubject">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassId" Type="int" />
+    <Property Name="SubjectId" Type="int" />
+  </EntityType>
+  <EntityType Name="tblExamType">
+    <Key>
+      <PropertyRef Name="ExamTypeId" />
+    </Key>
+    <Property Name="ExamTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamTypeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblResultDetails">
+    <Key>
+      <PropertyRef Name="DetailId" />
+    </Key>
+    <Property Name="DetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResultId" Type="int" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="Marks" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblResults">
+    <Key>
+      <PropertyRef Name="ResultId" />
+    </Key>
+    <Property Name="ResultId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="ClassId" Type="int" />
+    <Property Name="ExamTypeId" Type="int" />
+    <Property Name="Result" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblStudents">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StudentRoll" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClassId" Type="int" />
+  </EntityType>
+  <EntityType Name="tblSubjects">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__tblResult__Class__440B1D61">
+    <End Role="tblClass" Type="Self.tblClass" Multiplicity="0..1" />
+    <End Role="tblResults" Type="Self.tblResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClass">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="tblResults">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblResult__ExamT__44FF419A">
+    <End Role="tblExamType" Type="Self.tblExamType" Multiplicity="0..1" />
+    <End Role="tblResults" Type="Self.tblResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblExamType">
+        <PropertyRef Name="ExamTypeId" />
+      </Principal>
+      <Dependent Role="tblResults">
+        <PropertyRef Name="ExamTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblResult__Resul__47DBAE45">
+    <End Role="tblResults" Type="Self.tblResults" Multiplicity="1" />
+    <End Role="tblResults1" Type="Self.tblResults" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tblResults">
+        <PropertyRef Name="ResultId" />
+      </Principal>
+      <Dependent Role="tblResults1">
+        <PropertyRef Name="ResultId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblResult__Stude__4316F928">
+    <End Role="tblStudents" Type="Self.tblStudents" Multiplicity="0..1" />
+    <End Role="tblResults" Type="Self.tblResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStudents">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="tblResults">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblResult__Subje__48CFD27E">
+    <End Role="tblSubjects" Type="Self.tblSubjects" Multiplicity="0..1" />
+    <End Role="tblResultDetails" Type="Self.tblResultDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSubjects">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="tblResultDetails">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblStuden__Class__3E52440B">
+    <End Role="tblClass" Type="Self.tblClass" Multiplicity="0..1" />
+    <End Role="tblStudents" Type="Self.tblStudents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClass">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="tblStudents">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ResultManagementDbModelStoreContainer">
+    <EntitySet Name="tblClass" EntityType="Self.tblClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblClassSubject" EntityType="Self.tblClassSubject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblExamType" EntityType="Self.tblExamType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblResultDetails" EntityType="Self.tblResultDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblResults" EntityType="Self.tblResults" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStudents" EntityType="Self.tblStudents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSubjects" EntityType="Self.tblSubjects" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tblResult__Class__440B1D61" Association="Self.FK__tblResult__Class__440B1D61">
+      <End Role="tblClass" EntitySet="tblClass" />
+      <End Role="tblResults" EntitySet="tblResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblResult__ExamT__44FF419A" Association="Self.FK__tblResult__ExamT__44FF419A">
+      <End Role="tblExamType" EntitySet="tblExamType" />
+      <End Role="tblResults" EntitySet="tblResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblResult__Resul__47DBAE45" Association="Self.FK__tblResult__Resul__47DBAE45">
+      <End Role="tblResults" EntitySet="tblResults" />
+      <End Role="tblResults1" EntitySet="tblResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblResult__Stude__4316F928" Association="Self.FK__tblResult__Stude__4316F928">
+      <End Role="tblStudents" EntitySet="tblStudents" />
+      <End Role="tblResults" EntitySet="tblResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblResult__Subje__48CFD27E" Association="Self.FK__tblResult__Subje__48CFD27E">
+      <End Role="tblSubjects" EntitySet="tblSubjects" />
+      <End Role="tblResultDetails" EntitySet="tblResultDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblStuden__Class__3E52440B" Association="Self.FK__tblStuden__Class__3E52440B">
+      <End Role="tblClass" EntitySet="tblClass" />
+      <End Role="tblStudents" EntitySet="tblStudents" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
